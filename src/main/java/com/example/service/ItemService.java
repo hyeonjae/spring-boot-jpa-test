@@ -4,17 +4,17 @@ import com.example.model.ItemEntity;
 import com.example.repository.ItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import javax.transaction.Transactional;
 import java.util.List;
 
 @Service
-@Transactional
 public class ItemService {
 
     @Autowired
     ItemRepository itemRepository;
 
+    @Transactional
     public Long add(String name) {
         ItemEntity itemEntity = new ItemEntity(name);
         itemEntity = itemRepository.saveAndFlush(itemEntity);
