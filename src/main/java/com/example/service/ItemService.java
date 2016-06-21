@@ -15,7 +15,8 @@ public class ItemService {
     @Autowired
     ItemRepository itemRepository;
 
-    public Long add(ItemEntity itemEntity) {
+    public Long add(String name) {
+        ItemEntity itemEntity = new ItemEntity(name);
         itemEntity = itemRepository.saveAndFlush(itemEntity);
         return itemEntity.getId();
     }

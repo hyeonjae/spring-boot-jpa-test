@@ -19,6 +19,10 @@ public class OrderService {
         return orderRepository.saveAndFlush(order);
     }
 
+    public OrderEntity findOne(OrderEntity.OrderEntityPk orderPk) {
+        return orderRepository.findOne(orderPk);
+    }
+
     public void delete(OrderEntity order) {
         orderRepository.delete(order.getOrderEntityPk());
     }

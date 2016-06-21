@@ -15,7 +15,8 @@ public class UserService {
     @Autowired
     UserRepository userRepository;
 
-    public Long join(UserEntity userEntity) {
+    public Long join(String name) {
+        UserEntity userEntity = new UserEntity(name);
         userEntity = userRepository.saveAndFlush(userEntity);
         return userEntity.getId();
     }
