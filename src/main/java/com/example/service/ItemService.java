@@ -15,8 +15,8 @@ public class ItemService {
     ItemRepository itemRepository;
 
     @Transactional
-    public Long add(String name) {
-        ItemEntity itemEntity = new ItemEntity(name);
+    public Long add(Long id, String name) {
+        ItemEntity itemEntity = new ItemEntity(id, name);
         itemEntity = itemRepository.saveAndFlush(itemEntity);
         return itemEntity.getId();
     }

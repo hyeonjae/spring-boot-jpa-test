@@ -5,9 +5,10 @@ import org.springframework.data.repository.Repository;
 
 import java.util.List;
 
-public interface OrderRepository extends Repository<OrderEntity, OrderEntity.OrderEntityPk> {
+public interface OrderRepository extends OrderRepositoryCustom, Repository<OrderEntity, OrderEntity.OrderEntityPk> {
     OrderEntity findOne(OrderEntity.OrderEntityPk orderPk);
     List<OrderEntity> findAll();
     OrderEntity saveAndFlush(OrderEntity order);
     void delete(OrderEntity.OrderEntityPk orderPk);
+    void flush();
 }

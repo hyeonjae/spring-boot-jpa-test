@@ -1,14 +1,11 @@
 package com.example.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
+@Table(name = "Items")
 public class ItemEntity {
     @Id
-    @GeneratedValue
     @Column(name = "item_id")
     Long id;
 
@@ -18,7 +15,8 @@ public class ItemEntity {
     public ItemEntity() {
     }
 
-    public ItemEntity(String name) {
+    public ItemEntity(Long id, String name) {
+        this.id = id;
         this.name = name;
     }
 

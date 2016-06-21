@@ -15,8 +15,8 @@ public class UserService {
     UserRepository userRepository;
 
     @Transactional
-    public Long join(String name) {
-        UserEntity userEntity = new UserEntity(name);
+    public Long join(Long id, String name) {
+        UserEntity userEntity = new UserEntity(id, name);
         userEntity = userRepository.saveAndFlush(userEntity);
         return userEntity.getId();
     }

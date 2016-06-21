@@ -24,11 +24,22 @@ public class OrderService {
     }
 
     @Transactional
-    public void delete(OrderEntity order) {
+    public void deleteByNamedQuery(OrderEntity order) {
         orderRepository.delete(order.getOrderEntityPk());
+    }
+
+    @Transactional
+    public void deleteByQueryDsl(Long userId, Long itemId) {
+        orderRepository.deleteBy(userId, itemId);
+    }
+
+    @Transactional
+    public void deleteByQueryDsl(OrderEntity.OrderEntityPk orderPk) {
+        orderRepository.deleteBy(orderPk);
     }
 
     public List<OrderEntity> showAll() {
         return orderRepository.findAll();
     }
+
 }
