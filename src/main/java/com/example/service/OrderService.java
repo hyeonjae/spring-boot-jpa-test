@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.List;
 
 @Service
 @Transactional
@@ -16,5 +17,13 @@ public class OrderService {
 
     public OrderEntity order(OrderEntity order) {
         return orderRepository.saveAndFlush(order);
+    }
+
+    public void delete(OrderEntity order) {
+        orderRepository.delete(order.getOrderEntityPk());
+    }
+
+    public List<OrderEntity> showAll() {
+        return orderRepository.findAll();
     }
 }

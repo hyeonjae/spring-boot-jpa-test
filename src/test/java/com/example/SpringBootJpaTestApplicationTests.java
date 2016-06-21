@@ -12,6 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import java.util.List;
+
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = SpringBootJpaTestApplication.class)
 public class SpringBootJpaTestApplicationTests {
@@ -32,6 +34,8 @@ public class SpringBootJpaTestApplicationTests {
 
 	@Test
 	public void testUserService() throws Exception {
+		System.out.println("testUserService");
+
 		UserEntity user1 = new UserEntity("Curry");
 		Long userId1 = userService.join(user1);
 
@@ -44,6 +48,8 @@ public class SpringBootJpaTestApplicationTests {
 
 	@Test
 	public void testItemService() throws Exception {
+		System.out.println("testItemService");
+
 		ItemEntity item1 = new ItemEntity("Book");
 		Long itemId1 = itemService.add(item1);
 
@@ -56,6 +62,8 @@ public class SpringBootJpaTestApplicationTests {
 
 	@Test
 	public void testOrderService() throws Exception {
+		System.out.println("testOrderService");
+
 		UserEntity user1 = new UserEntity("Thompson");
 		Long userId1 = userService.join(user1);
 
@@ -66,5 +74,23 @@ public class SpringBootJpaTestApplicationTests {
 		order1 = orderService.order(order1);
 
 		System.out.println(String.format("order1: %s", order1.toString()));
+	}
+
+	@Test
+	public void testOrderShowAll() throws Exception {
+		System.out.println("testOrderShowAll");
+
+		UserEntity user1 = new UserEntity("Irving)");
+		Long userId1 = userService.join(user1);
+
+		ItemEntity item1 = new ItemEntity("Shoes");
+		Long itemId1 = itemService.add(item1);
+
+		OrderEntity order1 = new OrderEntity(userId1, itemId1);
+		order1 = orderService.order(order1);
+
+		List<OrderEntity> orders = orderService.showAll();
+
+		orders.stream().forEach(System.out::println);
 	}
 }
